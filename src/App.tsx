@@ -9,13 +9,13 @@ export default function App() {
   const [previewOpen, setPreviewOpen] = useState(false)
 
   return (
-    <div className="flex h-screen flex-col bg-ink-950 text-zinc-300">
+    <div className="flex h-screen flex-col bg-paper-50 text-ink-600">
       <Toolbar onOpenPreview={() => setPreviewOpen(true)} />
       <div className="flex min-h-0 flex-1">
-        <aside className="w-80 shrink-0 overflow-auto border-r border-white/10 p-4">
+        <aside className="w-80 shrink-0 overflow-auto border-r border-ink-200 p-4">
           <ProjectPanel />
         </aside>
-        <main className="min-w-0 flex-1 overflow-hidden border-r border-white/10">
+        <main className="min-w-0 flex-1 overflow-hidden border-r border-ink-200">
           <SceneList />
         </main>
         <aside className="w-[26rem] shrink-0 overflow-hidden">

@@ -35,29 +35,29 @@ export function ScreenplayModal({ onClose }: { onClose: () => void }) {
       onClick={onClose}
     >
       <div
-        className="flex h-full max-h-[82vh] w-full max-w-2xl flex-col rounded-xl border border-white/10 bg-ink-900 shadow-2xl"
+        className="flex h-full max-h-[82vh] w-full max-w-2xl flex-col rounded-xl border border-ink-200 bg-paper-100 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-          <h2 className="text-sm font-semibold text-white">剧本预览</h2>
-          <span className="text-xs text-zinc-600">行业格式 · 可直接用于拍摄</span>
-          <button onClick={onClose} className="ml-auto text-zinc-500 transition hover:text-white">
+        <header className="flex items-center gap-2 border-b border-ink-200 px-4 py-3">
+          <h2 className="text-sm font-semibold text-ink-900">剧本预览</h2>
+          <span className="text-xs text-ink-400">行业格式 · 可直接用于拍摄</span>
+          <button onClick={onClose} className="ml-auto text-ink-400 transition hover:text-ink-900">
             ✕
           </button>
         </header>
-        <pre className="min-h-0 flex-1 overflow-auto whitespace-pre-wrap px-5 py-4 font-mono text-xs leading-relaxed text-zinc-300">
+        <pre className="min-h-0 flex-1 overflow-auto whitespace-pre-wrap px-5 py-4 font-mono text-xs leading-relaxed text-ink-600">
           {text}
         </pre>
-        <footer className="flex items-center justify-end gap-2 border-t border-white/10 px-4 py-3">
+        <footer className="flex items-center justify-end gap-2 border-t border-ink-200 px-4 py-3">
           <button
             onClick={copy}
-            className="rounded-md border border-white/10 px-3 py-1.5 text-sm text-zinc-300 transition hover:text-white"
+            className="rounded-md border border-ink-200 px-3 py-1.5 text-sm text-ink-600 transition hover:text-ink-900"
           >
             {copied ? '已复制 ✓' : '复制文本'}
           </button>
           <button
             onClick={download}
-            className="rounded-md bg-brand-600 px-3.5 py-1.5 text-sm font-medium text-white transition hover:bg-brand-500"
+            className="rounded-md bg-brand-600 px-3.5 py-1.5 text-sm font-medium text-paper-50 transition hover:bg-brand-500"
           >
             导出 .txt
           </button>

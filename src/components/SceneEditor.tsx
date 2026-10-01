@@ -4,9 +4,9 @@ import { formatDuration } from '../engine/duration'
 import { BEATS, INTERIORS, TIMES, SHOT_SIZES, SHOT_MOVES } from '../data/constants'
 
 const inputCls =
-  'w-full rounded-md border border-white/10 bg-ink-800 px-2.5 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60'
+  'w-full rounded-md border border-ink-200 bg-paper-200 px-2.5 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60'
 const selectCls =
-  'rounded-md border border-white/10 bg-ink-800 px-2 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60'
+  'rounded-md border border-ink-200 bg-paper-200 px-2 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60'
 
 export function SceneEditor() {
   const scene = useScriptStore((s) => s.scenes.find((sc) => sc.id === s.selectedSceneId) ?? null)
@@ -21,7 +21,7 @@ export function SceneEditor() {
 
   if (!scene) {
     return (
-      <div className="flex h-full items-center justify-center text-sm text-zinc-600">
+      <div className="flex h-full items-center justify-center text-sm text-ink-400">
         选择或新建一个场景
       </div>
     )
@@ -36,7 +36,7 @@ export function SceneEditor() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex shrink-0 items-center gap-1 border-b border-white/10 p-2">
+      <div className="flex shrink-0 items-center gap-1 border-b border-ink-200 p-2">
         {(
           [
             ['scene', '场次'],
@@ -47,20 +47,20 @@ export function SceneEditor() {
             key={key}
             onClick={() => setTab(key)}
             className={`rounded-md px-3 py-1.5 text-sm transition ${
-              tab === key ? 'bg-white/10 text-white' : 'text-zinc-500 hover:text-zinc-300'
+              tab === key ? 'bg-ink-900/8 text-ink-900' : 'text-ink-400 hover:text-ink-600'
             }`}
           >
             {label}
           </button>
         ))}
-        <span className="ml-auto font-mono text-xs text-zinc-500">第{scene.number}场</span>
+        <span className="ml-auto font-mono text-xs text-ink-400">第{scene.number}场</span>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-4">
         {tab === 'scene' && (
           <div className="space-y-3">
             <label className="block">
-              <span className="mb-1 block text-xs text-zinc-500">场景名</span>
+              <span className="mb-1 block text-xs text-ink-400">场景名</span>
               <input
                 className={inputCls}
                 value={scene.slug}
@@ -68,7 +68,7 @@ export function SceneEditor() {
               />
             </label>
             <label className="block">
-              <span className="mb-1 block text-xs text-zinc-500">地点</span>
+              <span className="mb-1 block text-xs text-ink-400">地点</span>
               <input
                 className={inputCls}
                 placeholder="如 一号演播厅"
@@ -78,7 +78,7 @@ export function SceneEditor() {
             </label>
             <div className="grid grid-cols-3 gap-2">
               <label className="block">
-                <span className="mb-1 block text-xs text-zinc-500">时间</span>
+                <span className="mb-1 block text-xs text-ink-400">时间</span>
                 <select
                   className={`${selectCls} w-full`}
                   value={scene.time}
@@ -92,7 +92,7 @@ export function SceneEditor() {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs text-zinc-500">内外景</span>
+                <span className="mb-1 block text-xs text-ink-400">内外景</span>
                 <select
                   className={`${selectCls} w-full`}
                   value={scene.interior}
@@ -108,7 +108,7 @@ export function SceneEditor() {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs text-zinc-500">节拍</span>
+                <span className="mb-1 block text-xs text-ink-400">节拍</span>
                 <select
                   className={`${selectCls} w-full`}
                   value={scene.beat}
@@ -123,7 +123,7 @@ export function SceneEditor() {
               </label>
             </div>
             <label className="block">
-              <span className="mb-1 block text-xs text-zinc-500">
+              <span className="mb-1 block text-xs text-ink-400">
                 预计时长（秒） · {formatDuration(scene.duration)}
               </span>
               <input
@@ -138,7 +138,7 @@ export function SceneEditor() {
               />
             </label>
             <label className="block">
-              <span className="mb-1 block text-xs text-zinc-500">情节梗概</span>
+              <span className="mb-1 block text-xs text-ink-400">情节梗概</span>
               <textarea
                 className={`${inputCls} resize-none`}
                 rows={3}
@@ -149,7 +149,7 @@ export function SceneEditor() {
             </label>
             {characters.length > 0 && (
               <div>
-                <span className="mb-1 block text-xs text-zinc-500">出场人物</span>
+                <span className="mb-1 block text-xs text-ink-400">出场人物</span>
                 <div className="flex flex-wrap gap-1.5">
                   {characters.map((c) => {
                     const on = scene.characterIds.includes(c.id)
@@ -158,7 +158,7 @@ export function SceneEditor() {
                         key={c.id}
                         onClick={() => toggleCharacter(c.id)}
                         className={`rounded-full px-2.5 py-1 text-xs transition ${
-                          on ? 'bg-brand-500/20 text-brand-200' : 'bg-white/5 text-zinc-500 hover:text-zinc-300'
+                          on ? 'bg-brand-500/20 text-brand-700' : 'bg-ink-900/5 text-ink-400 hover:text-ink-600'
                         }`}
                       >
                         {c.name || '未命名'}
@@ -174,9 +174,9 @@ export function SceneEditor() {
         {tab === 'shots' && (
           <div className="space-y-2.5">
             {scene.shots.map((shot, idx) => (
-              <div key={shot.id} className="rounded-lg border border-white/10 bg-ink-800/50 p-2.5">
+              <div key={shot.id} className="rounded-lg border border-ink-200 bg-paper-200/50 p-2.5">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="font-mono text-xs text-zinc-500">镜{idx + 1}</span>
+                  <span className="font-mono text-xs text-ink-400">镜{idx + 1}</span>
                   <select
                     className={`${selectCls} !px-1.5 !py-1 text-xs`}
                     value={shot.size}
@@ -203,20 +203,20 @@ export function SceneEditor() {
                     <button
                       onClick={() => moveShot(scene.id, shot.id, -1)}
                       disabled={idx === 0}
-                      className="rounded px-1 text-zinc-500 hover:text-white disabled:opacity-30"
+                      className="rounded px-1 text-ink-400 hover:text-ink-900 disabled:opacity-30"
                     >
                       ↑
                     </button>
                     <button
                       onClick={() => moveShot(scene.id, shot.id, 1)}
                       disabled={idx === scene.shots.length - 1}
-                      className="rounded px-1 text-zinc-500 hover:text-white disabled:opacity-30"
+                      className="rounded px-1 text-ink-400 hover:text-ink-900 disabled:opacity-30"
                     >
                       ↓
                     </button>
                     <button
                       onClick={() => removeShot(scene.id, shot.id)}
-                      className="rounded px-1 text-zinc-600 hover:text-rose-400"
+                      className="rounded px-1 text-ink-400 hover:text-rose-600"
                     >
                       ✕
                     </button>
@@ -246,7 +246,7 @@ export function SceneEditor() {
             ))}
             <button
               onClick={() => addShot(scene.id)}
-              className="w-full rounded-md border border-dashed border-white/15 px-3 py-2 text-sm text-zinc-500 transition hover:border-white/30 hover:text-zinc-300"
+              className="w-full rounded-md border border-dashed border-ink-300 px-3 py-2 text-sm text-ink-400 transition hover:border-ink-400 hover:text-ink-600"
             >
               + 添加镜头
             </button>

@@ -6,7 +6,7 @@ import { formatDuration } from '../engine/duration'
 import { GENRES, CHARACTER_ROLES, BEAT_CHIP, BEAT_LABEL } from '../data/constants'
 
 function SectionTitle({ children }: { children: string }) {
-  return <h2 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">{children}</h2>
+  return <h2 className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-400">{children}</h2>
 }
 
 export function ProjectPanel() {
@@ -58,13 +58,13 @@ export function ProjectPanel() {
         <SectionTitle>项目信息</SectionTitle>
         <div className="space-y-2.5">
           <input
-            className="w-full rounded-md border border-white/10 bg-ink-800 px-2.5 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60"
+            className="w-full rounded-md border border-ink-200 bg-paper-200 px-2.5 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60"
             placeholder="作品标题"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <textarea
-            className="w-full resize-none rounded-md border border-white/10 bg-ink-800 px-2.5 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60"
+            className="w-full resize-none rounded-md border border-ink-200 bg-paper-200 px-2.5 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60"
             placeholder="一句话梗概 (logline)"
             rows={3}
             value={logline}
@@ -72,7 +72,7 @@ export function ProjectPanel() {
           />
           <div className="flex gap-2">
             <select
-              className="flex-1 rounded-md border border-white/10 bg-ink-800 px-2 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60"
+              className="flex-1 rounded-md border border-ink-200 bg-paper-200 px-2 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60"
               value={genre}
               onChange={(e) => setGenre(e.target.value as typeof genre)}
             >
@@ -82,10 +82,10 @@ export function ProjectPanel() {
                 </option>
               ))}
             </select>
-            <label className="flex items-center gap-1.5 text-sm text-zinc-400">
+            <label className="flex items-center gap-1.5 text-sm text-ink-500">
               目标
               <input
-                className="w-16 rounded-md border border-white/10 bg-ink-800 px-2 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60"
+                className="w-16 rounded-md border border-ink-200 bg-paper-200 px-2 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60"
                 value={Math.round(targetDuration / 60)}
                 onChange={(e) => {
                   const m = Number(e.target.value)
@@ -102,7 +102,7 @@ export function ProjectPanel() {
         <SectionTitle>AI 生成分场</SectionTitle>
         <div className="space-y-2">
           <input
-            className="w-full rounded-md border border-white/10 bg-ink-800 px-2.5 py-1.5 text-sm text-zinc-100 outline-none focus:border-brand-500/60"
+            className="w-full rounded-md border border-ink-200 bg-paper-200 px-2.5 py-1.5 text-sm text-ink-900 outline-none focus:border-brand-500/60"
             type="password"
             placeholder="DeepSeek API Key（可选）"
             value={apiKey}
@@ -111,11 +111,11 @@ export function ProjectPanel() {
           <button
             onClick={onGenerate}
             disabled={generating}
-            className="w-full rounded-md bg-accent-600 px-3 py-2 text-sm font-medium text-ink-950 transition hover:bg-accent-500 disabled:opacity-50"
+            className="w-full rounded-md bg-accent-600 px-3 py-2 text-sm font-medium text-paper-50 transition hover:bg-accent-500 disabled:opacity-50"
           >
             {generating ? '生成中…' : '✨ 根据梗概生成分场'}
           </button>
-          <p className="text-[11px] leading-relaxed text-zinc-600">
+          <p className="text-[11px] leading-relaxed text-ink-400">
             {genSource === 'api' && '已用 AI 模型生成，可继续编辑。'}
             {genSource === 'demo' && '未配置 API Key，已载入示例结构（可离线体验）。'}
             {!genSource && '未配置 Key 时使用内置示例，配置后走 DeepSeek 实时生成。'}
@@ -127,16 +127,16 @@ export function ProjectPanel() {
         <SectionTitle>人物</SectionTitle>
         <div className="space-y-2">
           {characters.map((c) => (
-            <div key={c.id} className="rounded-md border border-white/10 bg-ink-800/60 p-2">
+            <div key={c.id} className="rounded-md border border-ink-200 bg-paper-200/60 p-2">
               <div className="flex items-center gap-2">
                 <input
-                  className="min-w-0 flex-1 rounded border border-white/10 bg-ink-900 px-2 py-1 text-sm text-zinc-100 outline-none focus:border-brand-500/60"
+                  className="min-w-0 flex-1 rounded border border-ink-200 bg-paper-100 px-2 py-1 text-sm text-ink-900 outline-none focus:border-brand-500/60"
                   placeholder="姓名"
                   value={c.name}
                   onChange={(e) => updateCharacter(c.id, { name: e.target.value })}
                 />
                 <select
-                  className="rounded border border-white/10 bg-ink-900 px-1.5 py-1 text-xs text-zinc-300 outline-none"
+                  className="rounded border border-ink-200 bg-paper-100 px-1.5 py-1 text-xs text-ink-600 outline-none"
                   value={c.role}
                   onChange={(e) => updateCharacter(c.id, { role: e.target.value })}
                 >
@@ -148,14 +148,14 @@ export function ProjectPanel() {
                 </select>
                 <button
                   onClick={() => removeCharacter(c.id)}
-                  className="text-zinc-600 transition hover:text-rose-400"
+                  className="text-ink-400 transition hover:text-rose-600"
                   title="删除"
                 >
                   ✕
                 </button>
               </div>
               <input
-                className="mt-1.5 w-full rounded border border-white/10 bg-ink-900 px-2 py-1 text-xs text-zinc-400 outline-none focus:border-brand-500/60"
+                className="mt-1.5 w-full rounded border border-ink-200 bg-paper-100 px-2 py-1 text-xs text-ink-500 outline-none focus:border-brand-500/60"
                 placeholder="备注"
                 value={c.note}
                 onChange={(e) => updateCharacter(c.id, { note: e.target.value })}
@@ -164,7 +164,7 @@ export function ProjectPanel() {
           ))}
           <button
             onClick={addCharacter}
-            className="w-full rounded-md border border-dashed border-white/15 px-3 py-2 text-sm text-zinc-500 transition hover:border-white/30 hover:text-zinc-300"
+            className="w-full rounded-md border border-dashed border-ink-300 px-3 py-2 text-sm text-ink-400 transition hover:border-ink-400 hover:text-ink-600"
           >
             + 添加人物
           </button>
@@ -180,7 +180,7 @@ export function ProjectPanel() {
               return (
                 <div
                   key={b}
-                  className={`rounded-md px-2 py-1.5 text-xs ${covered ? BEAT_CHIP[b] : 'bg-white/5 text-zinc-600'}`}
+                  className={`rounded-md px-2 py-1.5 text-xs ${covered ? BEAT_CHIP[b] : 'bg-ink-900/5 text-ink-400'}`}
                 >
                   {BEAT_LABEL[b]}
                   {covered ? ' ✓' : ' —'}
@@ -189,30 +189,30 @@ export function ProjectPanel() {
             })}
           </div>
           <div className="grid grid-cols-3 gap-1.5 text-center text-xs">
-            <div className="rounded-md bg-white/5 px-1 py-2">
-              <div className="font-mono text-base text-white">{stats.sceneCount}</div>
-              <div className="text-zinc-500">场</div>
+            <div className="rounded-md bg-ink-900/5 px-1 py-2">
+              <div className="font-mono text-base text-ink-900">{stats.sceneCount}</div>
+              <div className="text-ink-400">场</div>
             </div>
-            <div className="rounded-md bg-white/5 px-1 py-2">
-              <div className="font-mono text-base text-white">{stats.shotCount}</div>
-              <div className="text-zinc-500">镜头</div>
+            <div className="rounded-md bg-ink-900/5 px-1 py-2">
+              <div className="font-mono text-base text-ink-900">{stats.shotCount}</div>
+              <div className="text-ink-400">镜头</div>
             </div>
-            <div className="rounded-md bg-white/5 px-1 py-2">
-              <div className="font-mono text-base text-white">{formatDuration(stats.totalDuration)}</div>
-              <div className="text-zinc-500">总长</div>
+            <div className="rounded-md bg-ink-900/5 px-1 py-2">
+              <div className="font-mono text-base text-ink-900">{formatDuration(stats.totalDuration)}</div>
+              <div className="text-ink-400">总长</div>
             </div>
           </div>
           {structure.issues.length > 0 && (
             <ul className="space-y-1">
               {structure.issues.map((issue, i) => (
-                <li key={i} className="text-[11px] text-amber-400/90">
+                <li key={i} className="text-[11px] text-amber-700/90">
                   ⚠ {issue.message}
                 </li>
               ))}
             </ul>
           )}
           {structure.complete && (
-            <p className="text-[11px] text-emerald-400">✓ 结构完整，起承转合齐备</p>
+            <p className="text-[11px] text-emerald-600">✓ 结构完整，起承转合齐备</p>
           )}
         </div>
       </section>

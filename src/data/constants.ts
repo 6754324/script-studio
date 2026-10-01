@@ -19,10 +19,10 @@ export const BEAT_DESC: Record<Beat, string> = {
 }
 
 export const BEAT_CHIP: Record<Beat, string> = {
-  起: 'bg-emerald-500/15 text-emerald-300',
-  承: 'bg-sky-500/15 text-sky-300',
-  转: 'bg-amber-500/15 text-amber-300',
-  合: 'bg-brand-500/15 text-brand-300',
+  起: 'bg-emerald-500/15 text-emerald-700',
+  承: 'bg-sky-500/15 text-sky-700',
+  转: 'bg-amber-500/15 text-amber-700',
+  合: 'bg-brand-500/15 text-brand-700',
 }
 
 export const INTERIORS: Interior[] = ['内景', '外景']
